@@ -1,0 +1,21 @@
+spring:
+  application:
+    name: EurekaAdminServer
+  security:
+    user:
+      name: "admin"
+      password: "admin"
+server:
+  port: 9090
+
+eureka:
+  client:
+    register-with-eureka: false
+    registryFetchIntervalSeconds: 5
+    service-url:
+      defaultZone: ${EUREKA_SERVICE_URL:http://localhost:9999}/eureka/
+  instance:
+    # 将客户端端子认证用户名密码发送至eureka
+    metadata-map:
+      user.name: ${spring.security.user.name}
+      user.password: ${spring.security.user.password}

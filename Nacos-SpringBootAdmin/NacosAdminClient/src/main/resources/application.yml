@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: NacosAdminClient
+  security:
+    user:
+      name: "admin"
+      password: "admin"
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 127.0.0.1:8848
+        metadata:
+          user.name: ${spring.security.user.name}
+          user.password: ${spring.security.user.password}
+server:
+  port: 10091
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: ALWAYS

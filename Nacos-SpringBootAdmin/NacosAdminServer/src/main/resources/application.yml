@@ -1,0 +1,17 @@
+spring:
+  application:
+    name: NacosAdminServer
+  security:
+    user:
+      name: "admin"
+      password: "admin"
+  cloud:
+    nacos:
+      discovery:
+        register-enabled: false # admin服务端不注册
+        server-addr: 127.0.0.1:8848
+        metadata:
+          user.name: ${spring.security.user.name}
+          user.password: ${spring.security.user.password}
+server:
+  port: 10090

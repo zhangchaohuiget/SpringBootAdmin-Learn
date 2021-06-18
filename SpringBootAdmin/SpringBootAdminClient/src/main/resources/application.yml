@@ -1,0 +1,32 @@
+spring:
+  application:
+    name: SpringBootAdminClient
+  # client 的用户名和密码
+  security:
+    user:
+      name: "admin"
+      password: "admin"
+  boot:
+    admin:
+      client:
+        url: http://localhost:8090
+        # server的用户名密码
+        username: "admin"
+        password: "admin"
+        # 将client的用户名密码发送至server
+        instance:
+          metadata:
+            user.name: ${spring.security.user.name}
+            user.password: ${spring.security.user.password}
+
+server:
+  port: 8091
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+  endpoint:
+    health:
+      show-details: ALWAYS
